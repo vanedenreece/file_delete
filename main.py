@@ -15,6 +15,11 @@ days = 31
 
 # function to perform delete operation based on condition
 def check_and_delete(folder):
+   
+   """
+   This function takes the root (downloads) folder in and deletes files only
+   in the root specified folder
+   """
 
 
    # os.walk returns 3 things: current path, files in the current path, and folders in the current path
@@ -27,7 +32,7 @@ def check_and_delete(folder):
             # get the timestamp, when the file was modified
             timestamp_of_file_modified = os.path.getmtime(file_path)
 
-            #    convert timestamp to datetime
+            # convert timestamp to datetime
             modification_date = datetime.datetime.fromtimestamp(timestamp_of_file_modified)
 
             # find the number of days when the file was modified
@@ -49,6 +54,7 @@ def check_and_delete(folder):
 
 
 if __name__ == "__main__":
+    
     # call function
     result = check_and_delete(folder)
     print(result)
