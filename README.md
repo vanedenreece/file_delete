@@ -8,9 +8,15 @@ This automation uses a simple python script to delete files in the specified dow
 - [Pip](https://pypi.org/project/pip/) package manager
 
 
+
 ## Workflow
 
-- 1) Specify Root Folder path,usually downloads but can be something else 
+- 1) Specify Root Folder path,usually downloads but can be something else **NB** file path must be a **backslash** else an Index Error will show in the console
+
+```
+IndexError: list index out of range
+```
+
 - 2) Specify number of days since file was modified
 - 3) Specify what files should be deleted in a tuple, example: *(".pdf",".png")*
 - 4) Files that are removed are deleted from the root folder ( downloads ) and logged to a log file
