@@ -3,7 +3,7 @@ import os
 import datetime
 import logging
 
-#setup logging object
+#setup the logging object
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.INFO)
 
