@@ -11,7 +11,9 @@ This automation uses a simple python script to delete files in the specified dow
 
 ## Workflow
 
-- 1) Specify Root Folder path,usually downloads but can be something else **NB** file path must be a **backslash** else an Index Error will show in the console
+- 1) Specify Root Folder path, in [folder_path.py](folder_path.py), usually downloads but can be specified to other folder where you want the script to run
+
+- **NB** file path must be a **backslash** else an Index Error will show in the console
 
 ```
 IndexError: list index out of range

@@ -2,15 +2,14 @@
 import os
 import datetime
 import logging
+from folder_path import DOWNLOADS_PATH
 
 #setup the logging object
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.INFO)
 
-# folder is the name of the folder in which we have to perform the delete operation [ specify ]
-folder = "C/USERS/PATH/TO/ROOT/FOLDER"
-
-
+# folder is the name of the folder in which we have to perform the delete operation [ specify in folder_path.py ]
+folder = DOWNLOADS_PATH
 
 # days is the number of days for which we have to check whether the file is older than the specified days or not [ specify]
 days = 31
