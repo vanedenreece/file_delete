@@ -5,6 +5,7 @@ This automation uses a simple python script to delete files in the specified dow
 ## How to:
 
 Download python and pypi package manager
+- clone repo
 - Install [Python](https://www.python.org/downloads/)
 - [Pip](https://pypi.org/project/pip/) package manager
     - All libraries used in the main file come standard with python > 3.0
