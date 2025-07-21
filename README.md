@@ -10,6 +10,8 @@ Download python and pypi package manager
 - [Pip](https://pypi.org/project/pip/) package manager
     - All libraries used in the main file come standard with python > 3.0
 
+- Run code from [main](main.py) file
+  
 
 
 ## Workflow
