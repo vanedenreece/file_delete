@@ -11,6 +11,7 @@ logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.INFO
 folder = "C/USERS/PATH/TO/ROOT/FOLDER"
 
 
+
 # days is the number of days for which we have to check whether the file is older than the specified days or not [ specify]
 days = 31
 
