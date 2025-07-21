@@ -1,0 +1,1 @@
+DOWNLOADS_PATH = "C:/Users/User/Downloads"

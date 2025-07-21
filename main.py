@@ -2,14 +2,17 @@
 import os
 import datetime
 import logging
-from folder_path import DOWNLOADS_PATH
+
+from conf.folder_path import DOWNLOADS_PATH
+from dict.file_endings import FILE_SUFFIX
 
 #setup the logging object
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig(filename='logs/logs.log', encoding='utf-8', level=logging.INFO)
 
 # folder is the name of the folder in which we have to perform the delete operation [ specify in folder_path.py ]
 folder = DOWNLOADS_PATH
+
 
 # days is the number of days for which we have to check whether the file is older than the specified days or not [ specify]
 days = 31
@@ -34,7 +37,7 @@ def check_and_delete(folder):
    [returns]:os object that removes files
    """
    if check_exists(folder) is not True:
-       print(f"file path invalid")
+       print(f"The file path entered, {folder} is invalid")
 
    # os.walk returns 3 things: current path, files in the current path, and folders in the current path
    for (root,dirs,files) in os.walk(folder, topdown=True):
@@ -54,13 +57,13 @@ def check_and_delete(folder):
             number_of_days = (datetime.datetime.now() - modification_date).days
             
             # adding certain document types that need to be romved (Leave .exe / .msi for apps)
-            if number_of_days > days and f.endswith((".txt",".pdf",".xlsx",".csv",".png","docx","jpg")): #specify tuple
+            if number_of_days > days and f.endswith((FILE_SUFFIX)): #specify tuple
                 os.remove(file_path)
                 logging.info(f"removed file{f}")
                 print(f"removed file {file_path}")
 
             #check for files in subfolders too
-            elif number_of_days > days and file_path.split("/")[3].endswith((".dat",".zip")): #specify tuple
+            elif number_of_days > days and file_path.split("/")[3].endswith((FILE_SUFFIX)): #specify tuple
                 os.remove(file_path)
                 logging.info(f"removed file{f}")
                 print(f"removed file {file_path}")
@@ -73,7 +76,8 @@ def check_and_delete(folder):
 if __name__ == "__main__":
     
     # call function
+    print(f"\nYour root folder is: {folder}\n\n...running script\n\n")
+
     result = check_and_delete(folder)
-    print(result)
 
 
