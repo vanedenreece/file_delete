@@ -7,8 +7,20 @@ from conf.folder_path import DOWNLOADS_PATH
 from dict.file_endings import FILE_SUFFIX
 
 #setup the logging object
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='logs/logs.log', encoding='utf-8', level=logging.INFO)
+logger = logging.getLogger("File Delete Logs")
+logger.setLevel(logging.DEBUG)
+
+ch = logging.FileHandler(filename="logs/logs.log")
+ch.setLevel(logging.DEBUG)
+
+#set logging formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
+## current date time
+now = datetime.datetime.now()
+cur_dt = now.strftime('%d/%m/%y,%I:%M:%S')
 
 # folder is the name of the folder in which we have to perform the delete operation [ specify in folder_path.py ]
 folder = DOWNLOADS_PATH
@@ -28,6 +40,9 @@ def check_exists(folder):
 
 # function to perform delete operation based on condition
 def check_and_delete(folder):
+   
+   logger.info('started run')
+
    
    """
    This function takes the root (downloads) folder in and deletes files only
@@ -59,18 +74,22 @@ def check_and_delete(folder):
             # adding certain document types that need to be romved (Leave .exe / .msi for apps)
             if number_of_days > days and f.endswith((FILE_SUFFIX)): #specify tuple
                 os.remove(file_path)
-                logging.info(f"removed file{f}")
+
+                logger.info(f"removed file: {f}")
                 print(f"removed file {file_path}")
 
             #check for files in subfolders too
             elif number_of_days > days and file_path.split("/")[3].endswith((FILE_SUFFIX)): #specify tuple
                 os.remove(file_path)
-                logging.info(f"removed file{f}")
+                
+                logger.info(f"removed file: {f}")
                 print(f"removed file {file_path}")
 
             else:
-               logging.info(f'skipping file{f}')
+               logger.info(f'skipping file {f}')
                print(f"skipping file {file_path}")
+
+        
 
 
 if __name__ == "__main__":
