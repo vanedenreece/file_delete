@@ -86,7 +86,6 @@ def check_and_delete(folder):
                 print(f"removed file {file_path}")
 
             else:
-               logger.info(f'skipping file {f}')
                print(f"skipping file {file_path}")
 
         
